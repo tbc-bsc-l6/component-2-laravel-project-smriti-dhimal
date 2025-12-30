@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Header</title>
+        <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="header">
