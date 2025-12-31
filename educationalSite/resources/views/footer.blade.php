@@ -19,14 +19,14 @@
       <h4>Accounts</h4>
       <a href="/login">Login</a>
       <a href="/register">Register</a>
-      <a href="/roles">User Roles</a>
+      <a href="#" onclick="alert('User Roles:\n\nAdmin -Manages modules, teachers,and users. \nTeacher -Manages students and results.\nStudent -Enrolls in modules.\nOld student -Views completed modules only.')">User Roles</a>
     </div>
 
  <div class="footer-section">
       <h4>Resources</h4>
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/terms">Terms of Service</a>
-      <a href="/support">Support</a>
+      <a href="#" onclick="alert('privacy policy:Data is used for educational purposes.')">Privacy Policy</a>
+      <a href="#" onclick="alert('Terms:This site is for educational use only.')">Terms of Service</a>
+      <a href="#" onclick="alert('Support:Please contact the site administrator.')">Support</a>
     </div>
   </div>
 
