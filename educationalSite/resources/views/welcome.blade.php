@@ -50,9 +50,10 @@
                 <div>
                     <a href="{{url('/login')}}">Login</a>
                     <a href="{{url('/register')}}">Register</a>
+                    <a href="{{url('/homepage')}}">Visit Website</a>
         </div>
         </div>
         </body>
         </html>
-        
+
                     
