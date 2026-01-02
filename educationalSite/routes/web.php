@@ -26,3 +26,15 @@ Route::get('/header', function (){
 Route::get('/footer', function (){
     return view('footer');
 });
+
+Route::get('/homepage', function (){
+    return view('homepage');
+});
+
+Route::get('/about', function (){
+    return view('about');
+});
+
+Route::get('/contact', function (){
+    return view('contact');
+});

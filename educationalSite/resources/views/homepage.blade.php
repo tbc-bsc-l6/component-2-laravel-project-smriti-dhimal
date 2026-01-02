@@ -26,7 +26,7 @@
         <h2>Site Functionalities</h2>
         <div class="feature-cards">
             <div class="card">
-                <img src="images/admin.webp" alt="Admin Icon">
+                <img src="images/admin.webp" alt="Admin">
                 <h3>Administrators</h3>
                 <ul>
                     <li>Admin accounts are created via seeder</li>
@@ -40,7 +40,7 @@
 </div>
 
 <div class="card">
-    <img src="images/teacher.webp" alt="Teacher Icon">
+    <img src="images/teacher.webp" alt="Teacher">
     <h3>Teachers</h3>
     <ul>
         <li>Accounts created by admin</li>
@@ -66,7 +66,7 @@
     <h3>Old Students</h3>
     <ul>
         <li>View history of completed modules</li>
-                    <li>See PASS / FAIL status only</li>
+        <li>See PASS / FAIL status only</li>
 </ul>
 </div>
 
