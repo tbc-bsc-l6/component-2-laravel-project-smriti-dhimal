@@ -3,13 +3,18 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\TeacherDashboardController;
+use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\OldStudentDashboardController;
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,3 +43,12 @@ Route::get('/about', function (){
 Route::get('/contact', function (){
     return view('contact');
 });
+
+Route::post('/contact-send', function (){
+    return redirect()->route('contact.thankyou');
+})->name('contact.send');
+
+Route::get('/contact-thankyou', function (){
+    return view('contact-thankyou');
+})->name('contact.thankyou');
+

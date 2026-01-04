@@ -27,10 +27,11 @@
 
 <div class="info-box">
     <h2>Send a Message</h2>
-    <form>
-        <input type="text" placeholder="Name" required><br><br>
-        <input type="email" placeholder="Email" required><br><br>
-        <textarea rows="5" placeholder="Message" required></textarea><br><br>
+    <form action="{{route('contact.send')}}" method="POST">
+        @csrf
+        <input type="text" name="name" placeholder="Name" required><br><br>
+        <input type="email" name="email" placeholder="Email" required><br><br>
+        <textarea  name="message" rows="5" placeholder="Message" required></textarea><br><br>
         <button type="submit" class="register-button">
             Send Message
 </button>
