@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('modules', function (Blueprint $table) {
             $table->id();
             $table->string('module')->unique();
+            $table->boolean('available')->default(true);
+            $table->foreignId('teacher_id')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
         });
     }

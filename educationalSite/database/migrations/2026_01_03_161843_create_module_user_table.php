@@ -11,22 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('module_user', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table){
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('module_id')->constrained()->cascadeOnDelete();
-            $table->date('start_date')->nullable();
-            $table->date('completed_at')->nullable();
-            $table->enum('result',['PASS','FAIL'])->nullable();
+            $table->string('module')->unique();
+            $table->boolean('available')->default(true);
+            $table->foreignId('teacher_id')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('module_user');
+        Schema::dropIfExists('modules');
     }
 };
+
