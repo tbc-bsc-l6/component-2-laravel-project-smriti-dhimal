@@ -45,6 +45,19 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        $user = Auth::user();
+
+        switch($user->user_role_id) {
+            case 1: // Admin
+                return redirect(route('admin.dashboard'));
+            case 2: // Teacher
+                return redirect(route('teacher.dashboard'));
+            case 3: // Student
+                return redirect(route('student.dashboard'));
+            case 4: // Old Student
+                return redirect(route('oldstudent.dashboard'));
+            default:
+                return redirect('/');
+        }
     }
 }
