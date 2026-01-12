@@ -23,7 +23,7 @@ class ModuleFactory extends Factory
             //
             'module' => fake()->words(3, true),
             'available' => fake()->boolean(80),
-            'teacher_id' => User::where('user_role_id', 2)->inRandomOrder()->first()?->id,
+            'teacher_id' => null,
         ];
 
     }
@@ -39,20 +39,6 @@ class ModuleFactory extends Factory
     {
         return $this->state(fn (array $attributes)=>[
             'available'=> false,
-        ]);
-    }
-
-    public function withTeacher() : static
-    {
-        return $this->state(fn (array $attributes)=>[
-            'teacher_id'=> User::factory()->teacher()->create()->id,
-        ]);
-    }
-
-    public function withoutTeacher() : static
-    {
-        return $this->state(fn (array $attributes)=>[
-            'teacher_id'=> null,
         ]);
     }
 }
