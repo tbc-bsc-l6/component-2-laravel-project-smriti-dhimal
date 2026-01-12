@@ -22,11 +22,11 @@ class DatabaseSeeder extends Seeder
             //'email' => 'test@example.com',
         //]);
         $this->call([
-            UserRoleSeeder::class,
-            UserSeeder::class,
-            ModuleSeeder::class,
-            EnhancedSeeder::class,
-        ]);
+    UserRoleSeeder::class, // must run first
+    AdminSeeder::class,
+    ModuleSeeder::class,
+]);
+
 
     }
 }
