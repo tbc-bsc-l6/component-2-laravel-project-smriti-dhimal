@@ -79,24 +79,5 @@ Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])
         ->name('student.enroll.module');
 });
 
-require __DIR__.'/auth.php';
-
-Route::get('/homepage', function (){
-    return view('homepage');
-});
-
-Route::get('/about', function (){
-    return view('about');
-});
-
-Route::get('/contact', function (){
-    return view('contact');
-});
-
-Route::post('/contact-send', function (){
-    return redirect()->route('contact.thankyou');
-})->name('contact.send');
-
-Route::get('/contact-thankyou', function (){
-    return view('contact-thankyou');
-})->name('contact.thankyou');
+Route::post('/teacher/module/{module}/student/{student}/result', [TeacherController::class, 'setResult'])
+     ->name('teacher.set.result');

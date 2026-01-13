@@ -30,12 +30,17 @@ class Module extends Model
 
     public function activeStudents()
     {
-        return $this->users()->whereNull('completed_at');
+        return $this->belongsToMany(User::class)
+            ->withPivot(['start_date', 'completed_at', 'result'])
+            ->whereNull('module_user.completed_at');
     }
 
     public function completedStudents()
     {
-        return $this->users()->whereNotNull('completed_at');
+        return $this->belongsToMany(User::class)
+            ->withPivot(['start_date', 'completed_at', 'result'])
+            ->whereNotNull('module_user.completed_at');
+        
     }
 
 }

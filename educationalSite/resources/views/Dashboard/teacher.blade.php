@@ -36,7 +36,7 @@
                 </div>
 
                 <!-- Active Students -->
-                 @if($module->activeStudents()->count() > 0)
+                 @if($module->activeStudents->count() > 0)
                  <div class="student-section">
                     <h4 class="student-subtitle">Active Students ({{ $module->activeStudents()->count() }})</h4>
                     <table class="data-table">
@@ -48,12 +48,13 @@
                                 <th>Action</th>
 </tr>
 </thead>
-</tbody>
-@foreach($module->activeStudents as $student)
-<tr>
-    <td>{{ $student->name }}</td>
-    <td>{{ $student->email }}</td>
-    <td>{{ $student->pivot->start_date ? $student->pivot->start_date->format('M d, Y') : 'N/A' }}</td>
+<tbody>
+@foreach($module->users as $student)
+    @if(!$student->pivot->completed_at)
+    <tr>
+        <td>{{ $student->name }}</td>
+        <td>{{ $student->email }}</td>
+        <td>{{ $student->pivot->start_date ? date('M d, Y', strtotime($student->pivot->start_date)) : 'N/A' }}</td>
     <td>
         <form action="{{ route('teacher.set.result', [$module->id, $student->id]) }}" method="POST" class="form-row">
            @csrf
@@ -66,6 +67,7 @@
 </form>
 </td>
 </tr>
+@endif
 @endforeach
 </tbody>
 </table>
@@ -77,9 +79,9 @@
 @endif
 
 <!-- Completed Students -->
- @if($module->completedStudents()->count() > 0)
+ @if($module->completedStudents->count() > 0)
  <div class="student-section">
-    <h4 class="student-subtitle">Completed Students ({{ $module->completedStudents()->count() }})</h4>
+    <h4 class="student-subtitle">Completed Students ({{ $module->completedStudents->count() }})</h4>
     <table class="data-table">
         <thead>
             <tr>
@@ -99,7 +101,7 @@
                 {{ $student->pivot->result }}
             </span>
 </td>
-<td>{{ $student->pivot->completed_at->format('M d, Y') }}</td>
+<td>{{ $student->pivot->completed_at ? date('M d, Y', strtotime($student->pivot->completed_at)) : 'N/A' }}</td>
 </tr>
 @endforeach
 </tbody>
@@ -117,11 +119,4 @@
 @endif
 </div>
 </div>
-@endsection
-
-
-
-
-
-
 @endsection

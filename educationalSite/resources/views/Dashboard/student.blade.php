@@ -35,13 +35,13 @@
                     Teacher: {{ $module->teacher ? $module->teacher->name : 'Not Assigned' }}
                 </p>
                 <p class="module-info">
-                    Enrolled: {{ $module->pivot->start_date->format('M d, Y') }}
+                    Enrolled: {{ $module->pivot->start_date ? date('M d, Y', strtotime($module->pivot->start_date)) : 'N/A' }}
 </p>
 <p class="module-info">
     Progress: In Progress
 </p>
 <div class="module-stats">
-    {{ $module->activeStudents->count() }}/10 students enrolled
+    {{ $module->activeStudents()->count() }}/10 students enrolled
 </div>
 </div>
 @endforeach
