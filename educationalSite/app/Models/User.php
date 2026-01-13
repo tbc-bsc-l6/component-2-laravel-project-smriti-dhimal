@@ -23,7 +23,7 @@ class User extends Authenticatable
         'user_role_id',
     ];
 
-    protected $guarded = ['id', 'remembre_token', 'email_verified_at'];
+    protected $guarded = ['id', 'remember_token', 'email_verified_at'];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -55,8 +55,8 @@ class User extends Authenticatable
     public function modules()
     {
         return $this->belongsToMany(Module::class)
-        ->withPivot('start_date', 'completed_at', 'result')
-        ->withTimestamps();
+            ->withPivot('start_date', 'completed_at', 'result')
+            ->withTimestamps();
     }
 
     public function activeModules()
@@ -78,14 +78,17 @@ class User extends Authenticatable
     {
         return $this->user_role_id === 1;
     }
+
     public function isTeacher()
     {
         return $this->user_role_id === 2;
     }
+
     public function isCurrentStudent()
     {
         return $this->user_role_id === 3;
     }
+
     public function isOldStudent()
     {
         return $this->user_role_id === 4;

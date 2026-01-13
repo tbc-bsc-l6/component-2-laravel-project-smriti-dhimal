@@ -8,11 +8,11 @@ class OldStudentDashboardController extends Controller
 {
     public function index()
     {
-        $completedModule = auth()->user()
+        $completedModules = auth()->user()
         ->completedModules()
         ->with('teacher')
         ->get();
 
-        return view('oldstudent.dashboard', compact('completedModules'));
+        return view('Dashboard.oldstudent', compact('completedModules'));
     }
 }

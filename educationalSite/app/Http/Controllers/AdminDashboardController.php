@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Module;
 use App\Models\UserRole;
+use App\Models\User;
+
 
 class AdminDashboardController extends Controller
 {
@@ -15,7 +17,7 @@ class AdminDashboardController extends Controller
         $students = User::whereIn('user_role_id', [3, 4])->get();
         $userRoles = UserRole::all();
 
-        return view('admin.dashboard', compact('modules', 'teachers', 'students', 'userRoles'));
+        return view('Dashboard.admin', compact('modules', 'teachers', 'students', 'userRoles'));
     }
 
     public function addModule(Request $request)
@@ -33,7 +35,7 @@ class AdminDashboardController extends Controller
         return redirect()->back()->with('success', 'Module added successfully.');
     }
 
-    public function toogleModuleAvailability($id)
+    public function toggleModuleAvailability($id)
     {
         $module = Module::findOrFail($id);
         $module->available = !$module->available;
@@ -102,6 +104,6 @@ class AdminDashboardController extends Controller
         Module::where('teacher_id', $id)->update(['teacher_id' => null]);
         $teacher->delete();
 
-        return redirect()-back()->with('success', 'Teacher removed successfully.');
+        return redirect()->back()->with('success', 'Teacher removed successfully.');
     }
 }

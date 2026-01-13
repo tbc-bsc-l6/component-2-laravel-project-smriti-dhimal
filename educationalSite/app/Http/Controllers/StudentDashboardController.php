@@ -34,7 +34,7 @@ class StudentDashboardController extends Controller
                 ->get();
         }
 
-        return view('student.dashboard', compact('activeModules', 'completedModules', 'availableModules', 'canEnroll'));
+        return view('Dashboard.student', compact('activeModules', 'completedModules', 'availableModules', 'canEnroll'));
     }
 
     public function enrollModule(Request $request, $moduleId)

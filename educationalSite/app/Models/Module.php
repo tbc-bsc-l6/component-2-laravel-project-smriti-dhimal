@@ -35,7 +35,7 @@ class Module extends Model
 
     public function completedStudents()
     {
-        return $this->user()->whereNotNull('completed_at');
+        return $this->users()->whereNotNull('completed_at');
     }
 
 }

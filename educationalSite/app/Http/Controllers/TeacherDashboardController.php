@@ -14,7 +14,7 @@ class TeacherDashboardController extends Controller
         ->with(['activeStudents', 'completedStudents'])
         ->get();
 
-        return view('teacher.dashboard', compact('assignedModules'));
+        return view('Dashboard.teacher', compact('assignedModules'));
     }
 
     public function setStudentResult(Request $request, $moduleId, $studentId)
